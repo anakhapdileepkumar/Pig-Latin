@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pig Latin Converter</title>
+</head>
+<body>
+  <h2>Pig Latin Converter</h2>
+  <input id="word" placeholder="Enter word" />
+  <button onclick="convert()">Convert</button>
+  <p id="result"></p>
+
+  <script>
+    function convert() {
+      let w = document.getElementById('word').value.toLowerCase().trim();
+      if (!w) return alert('Enter a word');
+      const vowels = ['a','e','i','o','u'];
+      if (vowels.includes(w[0])) {
+        document.getElementById('result').textContent = w + '-ay';
+      } else {
+        let i = 0;
+        while(i < w.length && !vowels.includes(w[i])) i++;
+        document.getElementById('result').textContent = w.slice(i) + '-' + w.slice(0,i) + 'ay';
+      }
+    }
+  </script>
+</body>
+</html>
